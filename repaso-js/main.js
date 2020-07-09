@@ -72,3 +72,41 @@ nombres.forEach(function(nombre){
 nombres.forEach(nombre => {
     document.write(nombre+'<br/>');
 });
+
+//Objectos JSON
+var coche = {
+    modelo: 'Mercedes CLA',
+    max: 500,
+    antiguedad: 2020,
+    mostrarDatos(){
+        console.log(this.modelo, this.max, this.antiguedad);
+    },
+    propiedad1: "Valor Aleatorio"
+}
+document.write("<h1>"+coche.modelo+"</h1>");
+document.write("<h1>Velocidad Maxima: "+coche.max+"</h1>");
+document.write("<h1>"+coche.antiguedad+"</h1>");
+
+//Ejecutar funcion dentro de un objeto JSON
+coche.mostrarDatos();
+
+// Promesas JavaScript
+var saludar = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        //
+        let saludo = "Hola cara de bola";
+        //saludo = false;
+        if(saludo){
+            resolve(saludo);
+        }else{
+            reject('No hay saludo disponible');
+        }
+    }, 2000);
+});
+//Ejecucion de promesas en JavaScript
+saludar.then(resultado => {
+    alert(resultado);
+})
+.catch(err => {
+    alert(err);
+});
