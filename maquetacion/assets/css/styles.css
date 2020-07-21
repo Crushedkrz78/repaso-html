@@ -279,7 +279,7 @@ input[type="text"]:focus{
 .subheader {
     font-size: 40px;
     border-bottom: 1px solid #eee;
-    padding: 10px;
+    padding-botton: 10px;
 }
 
 .article-detail .image-wrap {
