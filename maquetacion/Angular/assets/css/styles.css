@@ -352,7 +352,16 @@ textarea:focus {
     }
 }
 
-@media(max-width: 797px){    
+@media(max-width: 881px) {
+    #logo {
+        float: none;
+        width: 265px;        
+    }
+    #menu {
+        width: auto;
+    }
+}
+@media(max-width: 813px){    
     #logo {
         float: none;
         width: 240px;
