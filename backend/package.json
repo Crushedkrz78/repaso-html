@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "API RESTful del Master en Frameworks para JS de Victor Robles en Udemy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crushedkrz78/master-frameworks-javascript.git"
+  },
+  "author": "Cristian Perez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Crushedkrz78/master-frameworks-javascript/issues"
+  },
+  "homepage": "https://github.com/Crushedkrz78/master-frameworks-javascript#readme"
+}
