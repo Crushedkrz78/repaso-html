@@ -18,13 +18,15 @@ app.use(bodyParser.json());
 // Añadir prefijo a rutas
 
 // Ruta de prueba de API
-app.get('/probando', (req, res) => {
+app.post('/probando', (req, res) => {
     console.log('Hola Mundo');
+    var hola = req.body.hola;
 
     return res.status(200).send({
         curso: 'Master en Frameworks JS',
         autor: 'Victor Robles Web',
-        url: 'victorroblesweb.es'
+        url: 'victorroblesweb.es',
+        hola
     });
 });
 
