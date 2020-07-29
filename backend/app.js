@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // Cargar Archivos y rutas
+var articleRoutes = require('./routes/article');
 
 // Middlewares
 app.use(bodyParser.urlencoded({extended:false}));
@@ -15,20 +16,8 @@ app.use(bodyParser.json());
 
 //  CORS
 
-// Añadir prefijo a rutas
-
-// Ruta de prueba de API
-app.post('/probando', (req, res) => {
-    console.log('Hola Mundo');
-    var hola = req.body.hola;
-
-    return res.status(200).send({
-        curso: 'Master en Frameworks JS',
-        autor: 'Victor Robles Web',
-        url: 'victorroblesweb.es',
-        hola
-    });
-});
+// Añadir prefijo a rutas - Cargar Rutas
+app.use('/api/', articleRoutes);
 
 // Exportar Módulo (Archivo actual)
 module.exports = app;
