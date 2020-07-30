@@ -94,6 +94,37 @@ var controller = {
             });
         });
         
+    },
+
+    getArticle: (req,res) => {
+        //Obtener ID de la URL
+        var articleId = req.params.id;
+
+        //Validad que ID existe
+        if(!articleId || articleId == null){
+            return res.status(404).send({
+                status: 'error',
+                message: 'No existe el artículo solicitado'
+            });
+        }
+
+        //Buscar articulo
+        Article.findById(articleId, (err,article)=>{            
+            if(err || !article){
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No hay articulos para mostrar'
+                });
+            }
+
+            return res.status(200).send({
+                status: 'success',
+                article
+            });
+        });
+
+        //Devolver una respuesta
+        
     }
 }; //End Controller
 
