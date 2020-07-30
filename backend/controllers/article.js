@@ -3,7 +3,6 @@ var validator = require('validator');
 var Article = require('../models/article');
 
 var controller = {
-    // 
     datosCurso: (req, res) => {
         var hola = req.body.hola;
     
@@ -24,15 +23,11 @@ var controller = {
     save: (req, res) => {
         // Recoger parámetros por POST
         var params = req.body;
-        //console.log(params);
 
         //Validar Datos con librería (Validator)
         try{
-            //
             var validateTitle = !validator.isEmpty(params.title);
-            var validateContent = !validator.isEmpty(params.content);
-
-            
+            var validateContent = !validator.isEmpty(params.content);            
         }catch(err){
             return res.status(200).send({
                 status: 'error',
@@ -41,7 +36,6 @@ var controller = {
         }
 
         if(validateTitle && validateContent){        
-
             //Crear objeto a guardar
             var article = new Article();
 
@@ -49,11 +43,6 @@ var controller = {
             article.title = params.title;
             article.content = params.content;
             article.image = null;
-
-            /* return res.status(200).send({
-                status: 'success',
-                article
-            }); */
 
             //Guardar artículo
             article.save((err, articleStored) => {
@@ -69,16 +58,34 @@ var controller = {
                     article: articleStored
                 });
             });
-
-            
-
-            
         }else{
             return res.status(200).send({
                 status: 'error',
                 message: 'Los datos no son validos'
             });
-        }
+        }        
+    },
+
+    getArticles: (req, res) => {
+        //Find
+        Article.find({}).sort('-_id').exec((err, articles)=>{
+            if(err){
+                return res.status(200).send({
+                    status: 'error',
+                    message: 'No se pudo obtener la informacion de la Base de Datos'
+                });
+            }
+            if(!articles){
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No hay articulos para mostrar'
+                });
+            }
+            return res.status(200).send({
+            status: 'success',
+            articles
+            });
+        });
         
     }
 }; //End Controller
