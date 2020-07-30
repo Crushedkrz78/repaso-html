@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
-var ArticleSchema = Schema({
+var ArticleSchema = schema({
     title: String,
     content: String,
     date: { type: Date, default: Date.now},

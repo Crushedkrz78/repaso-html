@@ -1,6 +1,6 @@
 'use strict'
 var validator = require('validator');
-//var Article = require('../models/article');
+var Article = require('../models/article');
 
 var controller = {
     // 
@@ -31,33 +31,55 @@ var controller = {
             //
             var validateTitle = !validator.isEmpty(params.title);
             var validateContent = !validator.isEmpty(params.content);
+
+            
         }catch(err){
             return res.status(200).send({
+                status: 'error',
                 message: 'Faltan datos por enviar'
             });
         }
 
-        if(validateTitle && validateContent){
-            return res.status(200).send({
-                message: 'Validacion Correcta'
-            })
-        
+        if(validateTitle && validateContent){        
 
             //Crear objeto a guardar
+            var article = new Article();
 
             //Asignar valores a objeto
+            article.title = params.title;
+            article.content = params.content;
+            article.image = null;
+
+            /* return res.status(200).send({
+                status: 'success',
+                article
+            }); */
 
             //Guardar artículo
+            article.save((err, articleStored) => {
+                if(err || !articleStored){
+                    return res.status(404).send({
+                        status: 'error',
+                        message: 'El artículo no se ha guardado'
+                    });
+                }
+                //Devolver una respuesta
+                return res.status(200).send({
+                    status: 'success',
+                    article: articleStored
+                });
+            });
 
-            //Devolver una respuesta
-            return res.status(200).send({
-                article: params
-            })
+            
+
+            
         }else{
             return res.status(200).send({
+                status: 'error',
                 message: 'Los datos no son validos'
             });
         }
+        
     }
 }; //End Controller
 
