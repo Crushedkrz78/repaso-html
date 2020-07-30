@@ -67,8 +67,15 @@ var controller = {
     },
 
     getArticles: (req, res) => {
+        var query = Article.find({});
+        //Obtener el ultimo objeto
+        var last = req.params.last;
+        //console.log(last);
+        if(last || last != undefined){
+            query.limit(5);            
+        }
         //Find
-        Article.find({}).sort('-_id').exec((err, articles)=>{
+        query.sort('-_id').exec((err, articles)=>{
             if(err){
                 return res.status(200).send({
                     status: 'error',
