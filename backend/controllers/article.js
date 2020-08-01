@@ -144,7 +144,7 @@ var controller = {
         
         if(validateTitle && validateContent){
             //Realizar consulta Find->Update
-            article.findOneAndUpdate({_id: articleId}, params, {new:true}, (err, articleUpdated)=>{
+            Article.findOneAndUpdate({_id: articleId}, params, {new:true}, (err, articleUpdated) => {
                 if(err){
                     return res.status(500).send({
                         status: 'error',
@@ -169,6 +169,30 @@ var controller = {
                 message: 'Validación ha fallado'
             });
         }
+    },
+    delete: (req, res)=>{
+        //Recoger el ID de la URL
+        var articleId = req.params.id;
+
+        //FindAndDelete
+        Article.findOneAndDelete({_id: articleId}, (err, articleRemoved) => {
+            if(err){
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al borrar el artículo'
+                });
+            }
+            if(!articleRemoved){
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No se ha borrado el artículo, posiblemente no existe en la Base de Datos'
+                });
+            }
+            return res.status(200).send({
+                status: 'success',
+                articleRemoved
+            });
+        });        
     }
 }; //End Controller
 
