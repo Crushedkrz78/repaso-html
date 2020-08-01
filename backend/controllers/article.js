@@ -1,6 +1,7 @@
 'use strict'
 var validator = require('validator');
 var Article = require('../models/article');
+const article = require('../models/article');
 
 var controller = {
     datosCurso: (req, res) => {
@@ -122,9 +123,52 @@ var controller = {
                 article
             });
         });
+    },
+    update: (req, res) => {
+        //Obtener ID del artículo por URL
+        var articleId = req.params.id;        
 
-        //Devolver una respuesta
+        //Obtener datos recibidor por PUT
+        var params = req.body;
+
+        //Valida datos
+        try{
+            var validateTitle = !validator.isEmpty(params.title);
+            var validateContent = !validator.isEmpty(params.content);
+        }catch(err){
+            return res.status(404).send({
+                status: 'error',
+                message: 'Faltan datos por enviar'
+            });
+        }
         
+        if(validateTitle && validateContent){
+            //Realizar consulta Find->Update
+            article.findOneAndUpdate({_id: articleId}, params, {new:true}, (err, articleUpdated)=>{
+                if(err){
+                    return res.status(500).send({
+                        status: 'error',
+                        message: 'Error al actualizar el registro'
+                    });
+                }
+                if(!articleUpdated){
+                    return res.status(404).send({
+                        status: 'error',
+                        message: 'No existe el artículo'
+                    });
+                }
+
+                return res.status(200).send({
+                    status: 'success',
+                    articleUpdated
+                });
+            });
+        }else {
+            return res.status(200).send({
+                status: 'error',
+                message: 'Validación ha fallado'
+            });
+        }
     }
 }; //End Controller
 
