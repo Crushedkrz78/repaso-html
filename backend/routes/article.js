@@ -20,6 +20,7 @@ router.put('/article/:id', ArticleController.update);
 router.delete('/article/:id', ArticleController.delete);
 //Route para cargar archivos a la Base de Datos
 router.post('/upload-image/:id',mdUpload, ArticleController.upload);
+router.get('/get-image/:image', ArticleController.getImage);
 
 
 module.exports = router;

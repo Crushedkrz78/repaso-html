@@ -174,7 +174,7 @@ var controller = {
             });
         }
     },
-    delete: (req, res)=>{
+    delete: (req, res) => {
         //Recoger el ID de la URL
         var articleId = req.params.id;
 
@@ -198,7 +198,7 @@ var controller = {
             });
         });        
     },
-    upload: (req, res)=> {
+    upload: (req, res) => {
         //Configurar el Modulo de Connect Multiparty router/article.js (Done)
 
         //recoger archivo de la peticion
@@ -252,6 +252,21 @@ var controller = {
             });
         }
         // End Upload File  
+    },
+    getImage: (req, res) => {
+        var file = req.params.image;
+        var pathFile = './upload/articles/'+file;
+
+        fs.exists(pathFile, (exists) => {
+            if(exists){
+                return res.sendFile(path.resolve(pathFile));
+            }else{
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'El archivo solicitado no existe en el Server'
+                });
+            }
+        });
     }
 }; //End Controller
 
