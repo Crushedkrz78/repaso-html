@@ -193,6 +193,46 @@ var controller = {
                 articleRemoved
             });
         });        
+    },
+    upload: (req, res)=> {
+        //Configurar el Modulo de Connect Multiparty router/article.js (Done)
+
+        //recoger archivo de la peticion
+        var fileName = 'Imagen no subida...';
+
+        if(!req.files){
+            return res.status(404).send({
+                status: 'error',
+                message: fileName
+            });
+        }
+
+        //console.log(req.files);
+
+        //Conseguir el nombre y extension del archivo
+        var filePath = req.files.file0.path;
+        var fileSplit = filePath.split('\\');
+
+        // * ADVERTENCIA * Para Linux o Mac
+        // var fileSplit = filePath.split('/');
+
+        //Nombre y extensión del archivo
+        var fileName = fileSplit[2];
+        var extensionSplit = fileName.split('.');
+        var fileExt = extensionSplit[1];
+
+        //Comprobar la extension del archivo, si no es valido, eliminar archivo
+        if(fileExt != 'png' && fileExt != 'jpeg' && fileExt != 'jpg' && fileExt != 'gif'){
+            // Borrar el archivo subido
+        }else{
+            //Si todo es valido, busvar artículo, asignar el nombre de la imagen y actualizarlo
+        }
+
+        return res.status(404).send({
+            archivo: req.files,
+            file: fileSplit,
+            fileExt
+        });
     }
 }; //End Controller
 
