@@ -1,7 +1,11 @@
 'use strict'
+// Librerías JavaScript
 var validator = require('validator');
+var fs = require('fs');
+var path = require('path');
+
+// Clases importadas para este proyecto
 var Article = require('../models/article');
-const article = require('../models/article');
 
 var controller = {
     datosCurso: (req, res) => {
@@ -207,8 +211,6 @@ var controller = {
             });
         }
 
-        //console.log(req.files);
-
         //Conseguir el nombre y extension del archivo
         var filePath = req.files.file0.path;
         var fileSplit = filePath.split('\\');
@@ -224,15 +226,32 @@ var controller = {
         //Comprobar la extension del archivo, si no es valido, eliminar archivo
         if(fileExt != 'png' && fileExt != 'jpeg' && fileExt != 'jpg' && fileExt != 'gif'){
             // Borrar el archivo subido
+            fs.unlink(filePath, (err)=>{
+                
+                return res.status(200).send({
+                    status: 'error',
+                    message: 'La extensión de la imagen no es válida'
+                });
+            })
         }else{
             //Si todo es valido, busvar artículo, asignar el nombre de la imagen y actualizarlo
+            //Obtener ID de la URL
+            var articleId = req.params.id;
+            //Buscar articulo para actualizar en la Base de Datos
+            Article.findOneAndUpdate({_id: articleId}, {image:fileName}, {new:true}, (err, articleUpdated)=>{
+                if(err || !articleUpdated){
+                    return res.status(200).send({
+                        status: 'error',
+                        message: 'Error al guardar el archivo de imagen'
+                    });
+                }
+                return res.status(200).send({
+                    status: 'success',
+                    article: articleUpdated
+                });
+            });
         }
-
-        return res.status(404).send({
-            archivo: req.files,
-            file: fileSplit,
-            fileExt
-        });
+        // End Upload File  
     }
 }; //End Controller
 
