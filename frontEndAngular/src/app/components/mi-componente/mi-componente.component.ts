@@ -9,10 +9,17 @@ export class MiComponente{
   public comentario: string;
   public year: number;
 
+  public mostrarPeliculas: boolean;
+
   constructor(){
     this.titulo = "Hola Mundo desde mi componente";
     this.comentario = "Este es mi primer componente";
     this.year = 2020;
+    this.mostrarPeliculas = true;
     //console.log("Componente mi-componente");
+  }
+
+  ocultarPelicula(){
+    this.mostrarPeliculas = false;
   }
 }
