@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pagina.component.css']
 })
 export class PaginaComponent implements OnInit {
+  public title: string;
 
-  constructor() { }
+  constructor() {
+    this.title = "Página de pruebas";
+  }
 
   ngOnInit(): void {
   }
