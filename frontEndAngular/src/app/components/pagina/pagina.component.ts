@@ -26,4 +26,9 @@ export class PaginaComponent implements OnInit {
     });
   }
 
+  redireccion(){
+    //alert("Método de redirección");
+    this._router.navigate(['/pagina-de-pruebas','cristian','molinito']);
+  }
+
 }
