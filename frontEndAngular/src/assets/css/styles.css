@@ -11,7 +11,7 @@ body{
 
 #header {
     height: 120px;
-    width: 100%;    
+    width: 100%;
     background: white;
     border-bottom: 1px solid #ccc;
     border-top: 5px solid #f13e3e;
@@ -86,8 +86,9 @@ body{
     transition: 300ms all;
 }
 
-#menu a:hover {
-    color: #f13e3e;
+#menu a:hover,
+.active {
+    color: #f13e3e !important;
 }
 
 #slider {
@@ -136,7 +137,7 @@ body{
 
 .btn-white:hover {
     background-color: #444;
-    color: white;    
+    color: white;
 }
 
 #slider.slider-small {
@@ -153,7 +154,7 @@ body{
     width: 70%;
     float: left;
     /*border: 1px solid red;*/
-    min-height: 450px;    
+    min-height: 450px;
     margin-right: 20px;
 }
 
@@ -180,7 +181,7 @@ body{
 
 .sidebar-item .btn {
     margin: 0px auto;
-    margin-top: 10px;    
+    margin-top: 10px;
 }
 
 .btn {
@@ -355,13 +356,13 @@ textarea:focus {
 @media(max-width: 881px) {
     #logo {
         float: none;
-        width: 265px;        
+        width: 265px;
     }
     #menu {
         width: auto;
     }
 }
-@media(max-width: 813px){    
+@media(max-width: 813px){
     #logo {
         float: none;
         width: 240px;
