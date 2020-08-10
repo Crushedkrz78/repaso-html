@@ -1,12 +1,17 @@
 <h1 class="subheader">{{title}}</h1>
 
-<div *ngIf="nombre && apellido">
+<!--Ejemplo de una condicional if-else utilizando la directiva ng-template-->
+<div *ngIf="nombre && apellido;then siHayParametros else noHayParametros"></div>
+
+<!--Plantilla que se ejecuta cuando la condición devuelve valor True-->
+<ng-template #siHayParametros>
   <h2>El nombre es: {{nombre}}</h2>
   <h2>El apellido es: {{apellido}}</h2>
-</div>
+</ng-template>
 
-<div *ngIf="!nombre || !apellido">
+<!--Plantilla que se ejcuta cuando la condición devuelve valor False-->
+<ng-template #noHayParametros>
   <h2>No hay parámetros recibidos por la URL</h2>
-</div>
+</ng-template>
 
 <button (click)="redireccion()">Llévame al formulario</button>
