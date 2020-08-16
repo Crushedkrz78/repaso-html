@@ -14,7 +14,7 @@ export class PeliculasComponent implements OnInit, DoCheck, OnDestroy {
   public peliculas: Array<Pelicula>;
 
   constructor() {
-    this.titulo = "Componente Peliculas";
+    this.titulo = "Películas";
     this.peliculas = [
       new Pelicula("Spiderman 4", 2015, 'https://www.liderempresarial.com/wp-content/uploads/2019/09/Spiderman.jpg'),
       new Pelicula("Los Vengadores Endgame", 2019,'https://as.com/tikitakas/imagenes/2019/04/26/portada/1556258369_131914_1556258703_noticia_normal.jpg'),
