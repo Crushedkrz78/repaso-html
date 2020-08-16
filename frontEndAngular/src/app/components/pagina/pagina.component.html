@@ -1,17 +1,24 @@
-<h1 class="subheader">{{title}}</h1>
+<app-slider [nombre]="'Página'"></app-slider>
+  <div class="center">
+    <section id="content">
+      <h1 class="subheader">{{title}}</h1>
 
-<!--Ejemplo de una condicional if-else utilizando la directiva ng-template-->
-<div *ngIf="nombre && apellido;then siHayParametros else noHayParametros"></div>
+      <!--Ejemplo de una condicional if-else utilizando la directiva ng-template-->
+      <div *ngIf="nombre && apellido;then siHayParametros else noHayParametros"></div>
 
-<!--Plantilla que se ejecuta cuando la condición devuelve valor True-->
-<ng-template #siHayParametros>
-  <h2>El nombre es: {{nombre}}</h2>
-  <h2>El apellido es: {{apellido}}</h2>
-</ng-template>
+      <!--Plantilla que se ejecuta cuando la condición devuelve valor True-->
+      <ng-template #siHayParametros>
+        <h2>El nombre es: {{nombre}}</h2>
+        <h2>El apellido es: {{apellido}}</h2>
+      </ng-template>
 
-<!--Plantilla que se ejcuta cuando la condición devuelve valor False-->
-<ng-template #noHayParametros>
-  <h2>No hay parámetros recibidos por la URL</h2>
-</ng-template>
+      <!--Plantilla que se ejcuta cuando la condición devuelve valor False-->
+      <ng-template #noHayParametros>
+        <h2>No hay parámetros recibidos por la URL</h2>
+      </ng-template>
 
-<button (click)="redireccion()">Llévame al formulario</button>
+      <button (click)="redireccion()">Llévame al formulario</button>
+    </section>
+    <app-sidebar></app-sidebar>
+  <div class="clearfix"></div>
+</div>

@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontEndAngular';
-  public homeText = 'Bienvenido al Curso de Angular con Victor Robles';
+  public title = 'frontEndAngular';
 }
