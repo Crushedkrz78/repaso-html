@@ -4,6 +4,12 @@
 ></app-slider>
 <div class="center">
   <section id="content">
+
+    <div id="favorita" *ngIf="favorita">
+      <h2 class="subheader">Película favorita</h2>
+      <h4>{{favorita.title}}</h4>
+      <h5>{{favorita.year}}</h5>
+    </div>
     <h1 class="subheader">{{titulo}}</h1>
     <!--
     <button (click)="cambiarTitulo()">Pulsame</button>
@@ -29,6 +35,7 @@
       <div *ngFor="let pelicula of peliculas">
         <app-pelicula
           [pelicula]="pelicula"
+          (marcarFavorita)="mostrarFavorita($event)"
         ></app-pelicula>
       </div>
     </div>
