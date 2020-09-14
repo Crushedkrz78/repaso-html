@@ -1,10 +1,12 @@
 import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { Pelicula } from 'src/app/models/pelicula';
+import { PeliculaService } from '../../services/peliculas.service';
 
 @Component({
   selector: 'app-peliculas',
   templateUrl: './peliculas.component.html',
-  styleUrls: ['./peliculas.component.css']
+  styleUrls: ['./peliculas.component.css'],
+  providers: [PeliculaService]
 })
 export class PeliculasComponent implements OnInit, DoCheck, OnDestroy {
 
@@ -15,13 +17,17 @@ export class PeliculasComponent implements OnInit, DoCheck, OnDestroy {
   public favorita: Pelicula;
   public fecha: any;
 
-  constructor() {
+  constructor(
+    private _peliculaService: PeliculaService
+  ) {
     this.titulo = "Películas";
-    this.peliculas = [
+    /* this.peliculas = [
       new Pelicula("Spiderman 4", 2015, 'https://www.liderempresarial.com/wp-content/uploads/2019/09/Spiderman.jpg'),
       new Pelicula("Los Vengadores Endgame", 2019,'https://as.com/tikitakas/imagenes/2019/04/26/portada/1556258369_131914_1556258703_noticia_normal.jpg'),
       new Pelicula("Batman vs Superman", 2015, 'https://lh3.googleusercontent.com/proxy/ollafJxAW7-CRNkn0iKeyoXXBABNJBDK0cuZ_1cRpaATgXWRswyyM4nloXioh8-XpjxMDcpC_54b899oJgpUx-PuoO4CBSbNj7s5VAg3X_BF0Of928WKomN6V-Hyef060lAO27WEj71HR3VOpyqgvdtON5N2bU-VlGLHXuJaQN7_9qqzP9b-castAM8mWyGy1nTsCDTf5UQF-stTD_PXehWu4uzmjEfE0aWgOWIf')
-    ];
+    ]; */
+
+    this.peliculas = this._peliculaService.getPeliculas();
     this.fecha = new Date(2020, 8, 12);
   }
 
@@ -31,6 +37,7 @@ export class PeliculasComponent implements OnInit, DoCheck, OnDestroy {
 
   ngOnInit(): void {
     console.log("Evento OnInit lanzado / Componente iniciado");
+    console.log(this._peliculaService.holaMundo());
   }
 
   ngDoCheck(): void {
