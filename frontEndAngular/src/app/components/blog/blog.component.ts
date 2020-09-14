@@ -17,7 +17,15 @@ export class BlogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this._articleService.test());
+    //console.log(this._articleService.test());
+    this._articleService.getArticles().subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }
