@@ -6,7 +6,7 @@
       </div>
       <h2>{{article.title}}</h2>
       <span class="date">
-          {{article.date}}
+          {{article.date | amLocale: 'es' | amTimeAgo}}
       </span>
       <a href="#">Leer más</a>
       <div class="clearfix"></div>
