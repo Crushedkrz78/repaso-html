@@ -54,12 +54,14 @@ export class ArticleEditComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.article);
+    //console.log(this.article);/
     this._articleService.update(this.article._id, this.article).subscribe(
       response => {
         if(response.status == 'success'){
+          //console.log(response);
           this.status = 'success';
-          this.article = response.article;
+          this.article = response.articleUpdated;
+          //console.log(this.article);
           this._router.navigate(['/blog/articulo', this.article._id]);
         }else{
           this.status = 'error';
@@ -89,7 +91,6 @@ export class ArticleEditComponent implements OnInit {
             this._router.navigate(['/home']);
           }
         }, error => {
-          //console.log(error);
           this._router.navigate(['/home']);
         }
       );
