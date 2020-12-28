@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ArticleService } from '../../services/article.service';
 import { Article } from '../../models/article';
 import { Global } from '../../services/global';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-article',
@@ -40,14 +41,30 @@ export class ArticleComponent implements OnInit {
   }
 
   delete(_id){
-    this._articleService.delete(_id).subscribe(
-      response => {
-        this._router.navigate(['/blog']);
-      },error => {
-        console.log(error);
-        this._router.navigate(['/blog']);
+    swal({
+      title: "Estás Seguro?",
+      text: "Una vez eliminado no se podrá recuperar la información",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true
+    }).then((willDelete) => {
+      if(willDelete){
+        this._articleService.delete(_id).subscribe(
+          response => {
+            swal(
+              "Poof! el registro se ha eliminado correctamente!",{
+                icon: "success",
+              }
+            );
+            this._router.navigate(['/blog']);
+          },error => {
+            console.log(error);
+            this._router.navigate(['/blog']);
+          }
+        );
+      }else{
+        swal("El registro no se eliminará");
       }
-    );
+    });
   }
-
 }
