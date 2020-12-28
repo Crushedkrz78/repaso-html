@@ -45,7 +45,7 @@ export class ArticleComponent implements OnInit {
       title: "Estás Seguro?",
       text: "Una vez eliminado no se podrá recuperar la información",
       icon: "warning",
-      buttons: true,
+      buttons: [true, true],
       dangerMode: true
     }).then((willDelete) => {
       if(willDelete){
