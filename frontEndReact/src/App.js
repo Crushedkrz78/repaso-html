@@ -1,5 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './assets/img/logo.svg';
+import './assets/css/App.css';
+
+// Importar Componente
+import MiComponente from './components/MiComponente';
 
 function holaMundo(nombre, edad){
   var presentacion = <div>
@@ -18,18 +21,17 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Hola, bienvenido al curso de React de Víctor Robles.
         </p>
         {holaMundo(nombre, edad)}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <MiComponente/>
       </header>
+      <section className="componentes">
+        <MiComponente/>
+        <MiComponente/>
+        <MiComponente/>
+        <MiComponente/>
+      </section>
     </div>
   );
 }
