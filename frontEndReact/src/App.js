@@ -7,6 +7,7 @@ import Peliculas from './components/Peliculas';
 
 // Importar Componentes de Maquetacion
 import Header from './components/Header';
+import Slider from './components/Slider';
 
 function holaMundo(nombre, edad){
   var presentacion = <div>
@@ -23,6 +24,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <Slider/>
       
       
       
