@@ -9,6 +9,7 @@ import Peliculas from './components/Peliculas';
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
 
 function holaMundo(nombre, edad){
   var presentacion = <div>
@@ -42,6 +43,8 @@ function App() {
         </section>
         <Sidebar/>
       </div>
+      <div className="clearfix"></div>
+      <Footer/>
 
     </div>
   );
