@@ -5,6 +5,9 @@ import './assets/css/App.css';
 import MiComponente from './components/MiComponente';
 import Peliculas from './components/Peliculas';
 
+// Importar Componentes de Maquetacion
+import Header from './components/Header';
+
 function holaMundo(nombre, edad){
   var presentacion = <div>
     <h2>Hola, soy {nombre}</h2>
@@ -19,6 +22,10 @@ function App() {
 
   return (
     <div className="App">
+      <Header/>
+      
+      
+      
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
