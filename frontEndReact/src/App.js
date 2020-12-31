@@ -1,13 +1,10 @@
 import logo from './assets/img/logo.svg';
 import './assets/css/App.css';
 
-// Importar Componente
-import MiComponente from './components/MiComponente';
-import Peliculas from './components/Peliculas';
-
 // Importar Componentes de Maquetacion
 import Header from './components/Header';
 import Slider from './components/Slider';
+import SeccionPruebas from './components/SeccionPruebas';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 
@@ -29,18 +26,7 @@ function App() {
       <Slider/>
       
       <div className="center">
-        <section id="content">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hola, bienvenido al curso de React de Víctor Robles.
-          </p>
-          {holaMundo(nombre, edad)}
-
-          <section className="componentes">
-            <MiComponente/>
-            <Peliculas/>
-          </section>
-        </section>
+        <SeccionPruebas/>
         <Sidebar/>
       </div>
       <div className="clearfix"></div>
