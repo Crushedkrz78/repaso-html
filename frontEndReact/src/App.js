@@ -24,12 +24,8 @@ function App() {
           Hola, bienvenido al curso de React de Víctor Robles.
         </p>
         {holaMundo(nombre, edad)}
-        <MiComponente/>
       </header>
       <section className="componentes">
-        <MiComponente/>
-        <MiComponente/>
-        <MiComponente/>
         <MiComponente/>
       </section>
     </div>
