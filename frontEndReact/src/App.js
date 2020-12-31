@@ -8,6 +8,7 @@ import Peliculas from './components/Peliculas';
 // Importar Componentes de Maquetacion
 import Header from './components/Header';
 import Slider from './components/Slider';
+import Sidebar from './components/Sidebar';
 
 function holaMundo(nombre, edad){
   var presentacion = <div>
@@ -26,19 +27,22 @@ function App() {
       <Header/>
       <Slider/>
       
-      
-      
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hola, bienvenido al curso de React de Víctor Robles.
-        </p>
-        {holaMundo(nombre, edad)}
-      </header>
-      <section className="componentes">
-        <MiComponente/>
-        <Peliculas/>
-      </section>
+      <div className="center">
+        <section id="content">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Hola, bienvenido al curso de React de Víctor Robles.
+          </p>
+          {holaMundo(nombre, edad)}
+
+          <section className="componentes">
+            <MiComponente/>
+            <Peliculas/>
+          </section>
+        </section>
+        <Sidebar/>
+      </div>
+
     </div>
   );
 }
