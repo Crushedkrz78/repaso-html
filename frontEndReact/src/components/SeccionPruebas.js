@@ -6,7 +6,39 @@ import MiComponente from './MiComponente';
 import Peliculas from './Peliculas';
 
 class SeccionPruebas extends Component{
+
+    contador = 0;
+
+    /*
+    constructor(props){
+        super(props);
+
+        this.state = {
+            contador: 0
+        }
+    }
+    */
+
+    state = {
+       contador: 0
+    }
+
     // var HolaMundo = "";
+    sumar(){
+        //this.contador += 1;
+        //this.state.contador += 1;
+
+        this.setState({
+            contador: (this.state.contador + 1)
+        });
+    }
+
+    restar(){
+        //this.contador -= 1;
+        this.setState({
+            contador: (this.state.contador - 1)
+        });
+    }
 
     HolaMundo(nombre, edad){
         var presentacion = (
@@ -27,7 +59,19 @@ class SeccionPruebas extends Component{
                 <p>
                     Hola, bienvenido al curso de React de Víctor Robles.
                 </p>
+                <h2 className="subheader">Funciones y JSX Básico</h2>
                 {this.HolaMundo(nombre, 12)}
+
+                <h2 className="subheader">Componentes</h2>
+
+                <h2 className="subheader">Estado</h2>
+                <p>
+                    Contador: {this.state.contador}
+                </p>
+                <p>
+                    <input type="button" value="Sumar" onClick={this.sumar.bind(this)}/>
+                    <input type="button" value="Restar" onClick={this.restar.bind(this)}/>
+                </p>
             </section>
         );
     }
