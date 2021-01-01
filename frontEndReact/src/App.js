@@ -4,9 +4,12 @@ import './assets/css/App.css';
 // Importar Componentes de Maquetacion
 import Header from './components/Header';
 import Slider from './components/Slider';
-import SeccionPruebas from './components/SeccionPruebas';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
+
+// Impportar componentes de Pruebas
+import SeccionPruebas from './components/SeccionPruebas';
+import Peliculas from './components/Peliculas';
 
 function holaMundo(nombre, edad){
   var presentacion = <div>
@@ -31,7 +34,7 @@ function App() {
       />
       
       <div className="center">
-        <SeccionPruebas/>
+        <Peliculas/>
         <Sidebar/>
       </div>
       <div className="clearfix"></div>
