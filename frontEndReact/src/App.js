@@ -20,10 +20,15 @@ function App() {
   var nombre = "Cristian Perez";
   var edad = 27;
 
+  var buttonString = "Ver más";
+
   return (
     <div className="App">
       <Header/>
-      <Slider/>
+      <Slider 
+        title="Bienvenidos al Curso de ReactJS"
+        btn={buttonString}
+      />
       
       <div className="center">
         <SeccionPruebas/>
