@@ -25,7 +25,7 @@ class Peliculas extends Component {
     }
 
     componentWillMount(){
-        alert("Se va a cargar el componente PELICULAS");
+        //alert("Se va a cargar el componente PELICULAS");
         this.setState({
             peliculas: [
                 {titulo: 'Batman vs Superman', image: 'https://imagenes.20minutos.es/files/image_656_370/uploads/imagenes/2016/06/14/batman-vs-superman-dawn-of-justice-movie.jpg'},
@@ -37,13 +37,13 @@ class Peliculas extends Component {
         });
     }
 
-    componentDidMount(){
+    /* componentDidMount(){
         alert("Ya se ha montado el componente PELICULAS");
-    }
+    } */
 
-    componentWillUnmount(){
+    /* componentWillUnmount(){
         alert("Se va a desmontar el componente PELICULAS");
-    }
+    } */
 
     render(){
         var pStyle = {
@@ -51,6 +51,21 @@ class Peliculas extends Component {
             color: 'white',
             padding: '10px'
         };
+
+        //Condicionales en JS
+        var favorita;
+        if(this.state.favorita.titulo){
+            favorita = (
+                <p className="favorita" style={pStyle}>
+                    <strong>La película favorita es: </strong>
+                    <span>{this.state.favorita.titulo}</span>
+                </p>
+            )
+        }else{
+            favorita = (
+                <p>No hay película favorita</p>
+            )
+        }
 
         return(
             <div id="content" className="peliculas">
@@ -60,13 +75,17 @@ class Peliculas extends Component {
                     <button onClick={this.cambiarTitulo}>Cambiar Titulo de Batman</button>
                 </div>
 
-                {this.state.favorita.titulo &&
-                    <p className="favorita" style={pStyle}>
-                        <strong>La película favorita es: </strong>
-                        <span>{this.state.favorita.titulo}</span>
-                    </p>
-                }
-                
+                {/*Condicionales en JSX */}
+                {/* {this.state.favorita.titulo ? (
+                        <p className="favorita" style={pStyle}>
+                            <strong>La película favorita es: </strong>
+                            <span>{this.state.favorita.titulo}</span>
+                        </p>
+                    ) : (
+                        <p>No hay película favorita</p>
+                    )
+                } */}
+                {favorita}
 
                 {/*Crear componente Película */}
                 <div id="articles" className="peliculas">
