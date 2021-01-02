@@ -9,7 +9,8 @@ class Peliculas extends Component {
             {titulo: 'Gran Torino', image: 'https://assets.puzzlefactory.pl/puzzle/265/858/original.jpg'},
             {titulo: 'Looper', image:'https://www.filmanalizi.net/wp-content/uploads/2019/03/Looper-2012.jpg'}
         ],
-        nombre: 'Cristian Perez'
+        nombre: 'Cristian Perez',
+        favorita: ''
     };
 
     cambiarTitulo = () => {
@@ -22,7 +23,21 @@ class Peliculas extends Component {
         })
     }
 
+    favorita = (pelicula, indice) => {
+        console.log("Favorita marcada");
+        console.log(pelicula);
+        console.log(indice);
+        this.setState({
+            favorita: pelicula
+        });
+    }
+
     render(){
+        var pStyle = {
+            background: 'green',
+            color: 'white',
+            padding: '10px'
+        };
         return(
             <div id="content" className="peliculas">
                 <h2 className="subheader">Películas</h2>
@@ -30,6 +45,14 @@ class Peliculas extends Component {
                 <div>
                     <button onClick={this.cambiarTitulo}>Cambiar Titulo de Batman</button>
                 </div>
+
+                {this.state.favorita.titulo &&
+                    <p className="favorita" style={pStyle}>
+                        <strong>La película favorita es: </strong>
+                        <span>{this.state.favorita.titulo}</span>
+                    </p>
+                }
+                
 
                 {/*Crear componente Película */}
                 <div id="articles" className="peliculas">
@@ -39,6 +62,8 @@ class Peliculas extends Component {
                             <Pelicula 
                                 key={i} 
                                 pelicula={pelicula}
+                                indice={i}
+                                marcarFavorita={this.favorita}
                             />
                         )
                     })
