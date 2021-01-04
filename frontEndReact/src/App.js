@@ -1,5 +1,6 @@
 import logo from './assets/img/logo.svg';
 import './assets/css/App.css';
+import Router from './Router';
 
 // Importar Componentes de Maquetacion
 import Header from './components/Header';
@@ -10,6 +11,8 @@ import Footer from './components/Footer';
 // Impportar componentes de Pruebas
 import SeccionPruebas from './components/SeccionPruebas';
 import Peliculas from './components/Peliculas';
+
+// Importar Componente de Routing
 
 function holaMundo(nombre, edad){
   var presentacion = <div>
@@ -34,7 +37,8 @@ function App() {
       />
       
       <div className="center">
-        <Peliculas/>
+        <Router/>
+        {/*<Peliculas/>*/}
         <Sidebar/>
       </div>
       <div className="clearfix"></div>
