@@ -30,20 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
-      <Slider 
-        title="Bienvenidos al Curso de ReactJS"
-        btn={buttonString}
-      />
-      
-      <div className="center">
-        <Router/>
-        {/*<Peliculas/>*/}
-        <Sidebar/>
-      </div>
-      <div className="clearfix"></div>
-      <Footer/>
-
+      <Router/>
     </div>
   );
 }
