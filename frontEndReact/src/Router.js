@@ -27,6 +27,7 @@ class Router extends Component {
                     {/* Configurar rutas y páginas */}
                     <Switch>
                         <Route exact path="/" component={Peliculas}/>
+                        <Route exact path="/home" component={Peliculas}/>
                         <Route exact path="/ruta-prueba" component={SeccionPruebas}/>
                         <Route exact path="/segunda-ruta" component={MiComponente}/>
 
