@@ -8,10 +8,11 @@ import Peliculas from './components/Peliculas';
 import Error from './components/Error';
 
 import Header from './components/Header';
-
-import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
+
+
 import Home from './components/Home';
+import Blog from './components/Blog';
 
 class Router extends Component {
 
@@ -26,7 +27,7 @@ class Router extends Component {
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/home" component={Home}/>
-                    <Route exact path="/ruta-prueba" component={SeccionPruebas}/>
+                    <Route exact path="/blog" component={Blog}/>
                     <Route exact path="/segunda-ruta" component={MiComponente}/>
 
                     <Route exact path="/pagina-1" render={() => (
@@ -62,11 +63,6 @@ class Router extends Component {
 
                     <Route component={Error}/>
                 </Switch>
-
-
-                
-                {/*<Peliculas/>*/}
-                <Sidebar/>
                 
                 <div className="clearfix"></div>
                 <Footer/>
