@@ -11,20 +11,58 @@ class Formulario extends Component{
     generoMujerRef = React.createRef();
     generoOtroRef = React.createRef();
 
+    state = {
+        user: {}
+    };
+
     recibirFormulario = (e) => {
         e.preventDefault();
+
+        var genero = 'hombre';
+
+        if(this.generoHombreRef.current.checked){
+            genero = this.generoHombreRef.current.value;
+        }else if(this.generoMujerRef.current.checked){
+            genero = this.generoMujerRef.current.value;
+        }else{
+            genero = this.generoOtroRef.current.value;
+        }
+
+        var user = {
+            nombre: this.nombreRef.current.value,
+            apellidos: this.apellidosRef.current.value,
+            bio: this.bioRef.current.value,
+            genero: genero,
+        }
+
+        this.setState({
+            user: user
+        });
         
         console.log("Formulario enviado!!");
-        console.log(this.nombreRef.current.value);
+        console.log(user);
     }
 
     render(){
+
+        if(this.state.user){
+            var user = this.state.user;
+        }
 
         return(
             <div id="formulario">
                 <div className="center">
                     <div id="content">
                         <h1 className="subheader">Formulario</h1>
+                        {/*Mostrar datos del formulario*/}
+                        {this.state.user.nombre &&
+                            <div>
+                                <p>Nombre: <strong>{user.nombre}</strong></p>
+                                <p>Apellidos: <strong>{user.apellidos}</strong></p>
+                                <p>Bio: <strong>{user.bio}</strong></p>
+                                <p>Genero: <strong>{user.genero}</strong></p>
+                            </div>
+                        }
                         {/*Listado de artículos de la API */}
                         <form className="mid-form" onSubmit={this.recibirFormulario}>
                             <div className="form-group">
