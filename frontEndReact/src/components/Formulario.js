@@ -64,7 +64,7 @@ class Formulario extends Component{
                             </div>
                         }
                         {/*Listado de artículos de la API */}
-                        <form className="mid-form" onSubmit={this.recibirFormulario}>
+                        <form className="mid-form" onSubmit={this.recibirFormulario} onChange={this.recibirFormulario}>
                             <div className="form-group">
                                 <label htmlFor="nombre">Nombre</label>
                                 <input type="text" name="nombre" ref={this.nombreRef}/>                            
