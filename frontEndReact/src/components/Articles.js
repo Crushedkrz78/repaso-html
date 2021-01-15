@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Global from '../Global';
+import ImageDefault from '../assets/img/default-image.png';
 
 class Articles extends Component {
 
@@ -8,13 +10,15 @@ class Articles extends Component {
         status: null
     };
 
+    url = Global;
+
     componentWillMount(){
         this.getArticles();
     }
 
     getArticles = () => {
         // console.log("getArticles");
-        axios.get("http://localhost:3900/api/articles")
+        axios.get(this.url + "articles")
             .then(res => {
                 //console.log(res.data);
                 this.setState({
@@ -33,7 +37,15 @@ class Articles extends Component {
                 return(
                     <article className="article-item" id="article-template">
                         <div className="image-wrap">
-                            <img src="https://via.placeholder.com/250x180" alt="placeholder"/>
+                            {/*<img src="https://via.placeholder.com/250x180" alt="placeholder"/>*/}
+                            {article.image != null ? (
+                                <img src={this.url + "get-image/" + article.image} alt={article.title}/>
+                            ) : (
+                                <img src={ImageDefault} alt="placeholder"/>
+                            )
+
+                            }
+                            
                         </div>
                         <h2>{article.title}</h2>
                         <span className="date">
