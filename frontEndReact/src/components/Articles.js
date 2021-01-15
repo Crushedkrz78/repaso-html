@@ -10,7 +10,7 @@ class Articles extends Component {
         status: null
     };
 
-    url = Global;
+    url = Global.url;
 
     componentWillMount(){
         this.getArticles();
