@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Moment from 'react-moment';
+import 'moment/locale/es';
 import Global from '../Global';
 import ImageDefault from '../assets/img/default-image.png';
 
@@ -49,7 +51,7 @@ class Articles extends Component {
                         </div>
                         <h2>{article.title}</h2>
                         <span className="date">
-                            {article.date}
+                            <Moment fromNow>{article.date}</Moment>
                         </span>
                         <a href="#">Leer más</a>
                         
