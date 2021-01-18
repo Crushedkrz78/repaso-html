@@ -16,14 +16,30 @@ class Articles extends Component {
     url = Global.url;
 
     componentWillMount(){
-        this.getArticles();
+        var home = this.props.home;
+        if(home === 'true'){
+            this.getLastArticles();
+        }else{
+            this.getArticles();
+        }
+        
+    }
+
+    getLastArticles = () => {
+        axios.get(this.url + "articles/last")
+            .then(res => {
+                this.setState({
+                    articles: res.data.articles,
+                    status: 'success'
+                });
+
+                console.log(this.state);
+            });
     }
 
     getArticles = () => {
-        // console.log("getArticles");
         axios.get(this.url + "articles")
             .then(res => {
-                //console.log(res.data);
                 this.setState({
                     articles: res.data.articles,
                     status: 'success'
