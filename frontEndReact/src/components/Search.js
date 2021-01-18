@@ -3,7 +3,7 @@ import Slider from './Slider';
 import Sidebar from './Sidebar';
 import Articles from './Articles';
 
-class Blog extends Component{
+class Search extends Component{
 
     state = {
         articles: {},
@@ -11,18 +11,21 @@ class Blog extends Component{
     }
 
     render(){
+        var searched = this.props.match.params.search;
 
         return(
             <div id="blog">
                 <Slider 
-                    title="Blog"
+                    title={'Busqueda: '+searched}
                     size="slider-small"
                 />
                 <div className="center">
                     <div id="content">
                         <h1 className="subheader">Últimos artículos</h1>
                         {/*Listado de artículos de la API */}
-                        <Articles/>
+                        <Articles
+                            search={searched}
+                        />
                         
                     </div>
 
@@ -35,4 +38,4 @@ class Blog extends Component{
     }
 }
 
-export default Blog;
+export default Search;

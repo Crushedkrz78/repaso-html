@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 
 import Home from './components/Home';
 import Blog from './components/Blog';
+import Search from './components/Search';
 import Formulario from './components/Formulario';
 import Peliculas from './components/Peliculas';
 
@@ -33,6 +34,7 @@ class Router extends Component {
                     <Route exact path="/blog/articulo/:id" render={() => (
                         <h1>Página individual del artículo</h1>
                     )}/>
+                    <Route exact path="/blog/busqueda/:search" component={Search}/>
                     <Route exact path="/formulario" component={Formulario}/>
                     <Route exact path="/peliculas" component={Peliculas}/>
 
