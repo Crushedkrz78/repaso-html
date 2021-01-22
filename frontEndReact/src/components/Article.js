@@ -5,16 +5,46 @@ import Global from '../Global';
 import Sidebar from './Sidebar';
 
 class Article extends Component {
-    //
+
+    url = Global.url;
+
+    state = {
+        article: false,
+        status: null
+    };
+
+    componentWillMount(){
+        this.getArticle();
+    }
+
+    getArticle = () => {
+        var id = this.props.match.params.id;
+
+        axios.get(this.url + 'article/' + id)
+        .then(res => {
+            this.setState({
+                article: res.data.article,
+                state: 'success'
+            });
+        }).catch( err => {
+            this.setState({
+                article: false,
+                status: 'success'
+            });
+        })
+    }
+    
     render(){
+        var article = this.state.article;
         return(
             <div className="center">
                 <section id="content">
+                    {this.state.article &&
                         <article className="article-item article-detail">
                             <div className="image-wrap">
                                 <img src="https://www.viajejet.com/wp-content/viajes/Lago-Moraine-Parque-Nacional-Banff-Alberta-Canada-1440x810.jpg" alt="paisaje"/>
                             </div>
-                            <h1 className="subheader">Artículo de Prueba</h1>
+                            <h1 className="subheader">{article.title}</h1>
                             <span className="date">
                                 Hace 5 minutos
                             </span>
@@ -46,6 +76,21 @@ class Article extends Component {
                             </p>
                             <div className="clearfix"></div>
                         </article>
+                    }
+
+                    {!this.state.article && this.state.status === 'success' &&
+                        <div id="article">
+                            <h2 className="subheader">El artículo no existe</h2>
+                            <p>Inténtalo de nuevo más tarde.</p>
+                        </div>
+                    }
+
+                    {!this.state.status == null &&
+                        <div id="article">
+                            <h2 className="subheader">Cargando...</h2>
+                            <p>Espere un momento...</p>
+                        </div>
+                    }
                 </section>
                 <Sidebar/>
             </div>
