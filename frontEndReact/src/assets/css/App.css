@@ -207,6 +207,16 @@ body{
   background: black;
 }
 
+.btn-danger {
+  background: rgb(250, 0, 0);
+  color: white !important;
+}
+
+.btn-warning {
+  background: rgb(250, 150, 19);
+  color: white !important;
+}
+
 .mid-form {
   width: 50%;
   margin: 0px auto;
