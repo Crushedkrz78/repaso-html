@@ -10,13 +10,14 @@ import Error from './components/Error';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-
 import Home from './components/Home';
 import Blog from './components/Blog';
 import Article from './components/Article';
 import Search from './components/Search';
 import Formulario from './components/Formulario';
 import Peliculas from './components/Peliculas';
+
+import CreateArticle from './components/CreateArticle';
 
 class Router extends Component {
 
@@ -33,6 +34,7 @@ class Router extends Component {
                     <Route exact path="/home" component={Home}/>
                     <Route exact path="/blog" component={Blog}/>
                     <Route exact path="/blog/articulo/:id" component={Article}/>
+                    <Route exact path="/blog/crear" component={CreateArticle}/>
                     <Route exact path="/blog/busqueda/:search" component={Search}/>
                     <Route exact path="/redirect/:search" render={(props) => {
                         var search = props.match.params.search;
