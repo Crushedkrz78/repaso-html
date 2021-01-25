@@ -234,7 +234,9 @@ body{
   margin-top: 10px;
 }
 
-input[type="text"], textarea{
+input[type="text"],
+input[type="file"],
+textarea{
   width: 100%;
   min-height: 30px;
   border: 1px solid #ccc;
@@ -257,6 +259,10 @@ textarea {
 
 textarea:focus {
   box-shadow: 0px 0px 5px #eee inset;
+}
+
+input[type="submit"]{
+  margin-top: 15px;
 }
 
 .radio-buttons {
