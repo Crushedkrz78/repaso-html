@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import MensajeEstatico from './MensajeEstatico';
+import React, { Component } from 'react';
 import Pelicula from './Pelicula';
 import Slider from './Slider';
 import Sidebar from './Sidebar';
@@ -27,7 +26,6 @@ class Peliculas extends Component {
     }
 
     componentWillMount(){
-        //alert("Se va a cargar el componente PELICULAS");
         this.setState({
             peliculas: [
                 {titulo: 'Batman vs Superman', image: 'https://imagenes.20minutos.es/files/image_656_370/uploads/imagenes/2016/06/14/batman-vs-superman-dawn-of-justice-movie.jpg'},
@@ -38,14 +36,6 @@ class Peliculas extends Component {
             favorita: ''
         });
     }
-
-    /* componentDidMount(){
-        alert("Ya se ha montado el componente PELICULAS");
-    } */
-
-    /* componentWillUnmount(){
-        alert("Se va a desmontar el componente PELICULAS");
-    } */
 
     render(){
         var pStyle = {
@@ -83,16 +73,6 @@ class Peliculas extends Component {
                             <button onClick={this.cambiarTitulo}>Cambiar Titulo de Batman</button>
                         </div>
 
-                        {/*Condicionales en JSX */}
-                        {/* {this.state.favorita.titulo ? (
-                                <p className="favorita" style={pStyle}>
-                                    <strong>La película favorita es: </strong>
-                                    <span>{this.state.favorita.titulo}</span>
-                                </p>
-                            ) : (
-                                <p>No hay película favorita</p>
-                            )
-                        } */}
                         {favorita}
 
                         {/*Crear componente Película */}

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 //Importar componentes a Routear
-import SeccionPruebas from './components/SeccionPruebas';
 import MiComponente from './components/MiComponente';
 
 import Error from './components/Error';

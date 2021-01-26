@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import logo from '../assets/img/logo.svg';
+//import logo from '../assets/img/logo.svg';
 
 // Importar Componente
-import MiComponente from './MiComponente';
-import Peliculas from './Peliculas';
+//import MiComponente from './MiComponente';
+//import Peliculas from './Peliculas';
 
 class SeccionPruebas extends Component{
 

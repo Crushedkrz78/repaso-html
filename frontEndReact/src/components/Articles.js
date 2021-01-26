@@ -76,7 +76,7 @@ class Articles extends Component {
 
             var listArticles = this.state.articles.map((article) => {
                 return(
-                    <article className="article-item" id="article-template">
+                    <article key={article._id} className="article-item" id="article-template">
                         <div className="image-wrap">
                             {/*<img src="https://via.placeholder.com/250x180" alt="placeholder"/>*/}
                             {article.image != null ? (
