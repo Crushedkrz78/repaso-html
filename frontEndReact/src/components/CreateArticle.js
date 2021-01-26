@@ -10,6 +10,8 @@ class CreateArticle extends Component{
     titleRef = React.createRef();
     contentRef = React.createRef();
 
+    url = Global.url;
+
     state = {
         article: {},
         status: null
@@ -31,9 +33,27 @@ class CreateArticle extends Component{
 
         //Rellenar State con datos del formulario
         this.changeState();
+
+        // Petición HTTP POST para guardar artículo
+        axios.post(this.url+'save', this.state.article)
+        .then(res => {
+            if(res.data.article){
+                this.setState({
+                    article: res.data.article,
+                    status: 'success'
+                });
+            }else{
+                this.setState({
+                    status: 'failed'
+                });
+            }
+        });
     }
 
     render(){
+        if(this.state.status === 'success'){
+            return <Redirect to="/blog"/>;
+        }
         return(
             <div className="center">
                 <section id="content">
