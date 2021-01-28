@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Global from '../Global';
 import Sidebar from './Sidebar';
 import Moment from 'react-moment';
+import swal from 'sweetalert';
 import 'moment/locale/es';
 import ImageDefault from '../assets/img/default-image.png';
 
@@ -36,8 +37,59 @@ class Article extends Component {
             });
         })
     }
+
+    deleteArticle = (id) => {
+        swal({
+            title: "¿Estás seguro?",
+            text: "Una vez eliminado, no podremos recuperar el artículo de nuestras Bases de Datos",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                axios.delete(this.url+'article/'+id)
+                .then( res => {
+                    this.setState({
+                        article: res.data.article,
+                        status: 'deleted'
+                    });
+    
+                    swal(
+                        'Artículo eliminado',
+                        'El artículo ha sido eliminado correctamente',
+                        'success'
+                    );
+                });
+            } else {
+                swal(
+                    'Tranquilo!!',
+                    'El artículo está aún seguro en nuestras bases de datos :)',
+                    'success'
+                );
+            }
+          });
+        /*  
+        axios.delete(this.url+'article/'+id)
+            .then( res => {
+                this.setState({
+                    article: res.data.article,
+                    status: 'deleted'
+                });
+
+                swal(
+                    'Artículo eliminado',
+                    'El artículo ha sido eliminado correctamente',
+                    'success'
+                );
+            });
+            */
+    }
     
     render(){
+        if(this.state.status === 'deleted'){
+            return <Redirect to="/blog"/>
+        }
         var article = this.state.article;
         return(
             <div className="center">
@@ -60,8 +112,12 @@ class Article extends Component {
                             <p>
                                 {article.content}
                             </p>
-                            <Link to="/blog" className="btn btn-danger">Eliminar</Link>
-                            <Link to="/blog" className="btn btn-warning">Editar</Link>
+                            <button onClick={
+                                () => {
+                                    this.deleteArticle(article._id);
+                                }
+                            } to="/blog" className="btn btn-danger">Eliminar</button>
+                            <button to="/blog" className="btn btn-warning">Editar</button>
                             
                             <div className="clearfix"></div>
                         </article>
