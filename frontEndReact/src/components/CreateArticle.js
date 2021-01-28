@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import SimpleReactValidator from 'simple-react-validator';
+import swal from 'sweetalert';
 import Global from '../Global';
 import Sidebar from './Sidebar';
 
@@ -53,6 +54,11 @@ class CreateArticle extends Component{
                         article: res.data.article,
                         status: 'waiting'
                     });
+                    swal(
+                        'Artículo creado',
+                        'El artículo ha sido creado correctamente',
+                        'success'
+                        );
                     // Subir la imagen
                     if(this.state.selectedFile !== null){
                         // Obtener ID del artículo guardado
