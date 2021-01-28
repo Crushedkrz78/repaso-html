@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 import Global from '../Global';
 import Sidebar from './Sidebar';
@@ -69,21 +69,6 @@ class Article extends Component {
                 );
             }
           });
-        /*  
-        axios.delete(this.url+'article/'+id)
-            .then( res => {
-                this.setState({
-                    article: res.data.article,
-                    status: 'deleted'
-                });
-
-                swal(
-                    'Artículo eliminado',
-                    'El artículo ha sido eliminado correctamente',
-                    'success'
-                );
-            });
-            */
     }
     
     render(){
@@ -117,7 +102,7 @@ class Article extends Component {
                                     this.deleteArticle(article._id);
                                 }
                             } to="/blog" className="btn btn-danger">Eliminar</button>
-                            <button to="/blog" className="btn btn-warning">Editar</button>
+                            <Link to={"/blog/editar/"+article._id} className="btn btn-warning">Editar</Link>
                             
                             <div className="clearfix"></div>
                         </article>

@@ -137,7 +137,7 @@ class CreateArticle extends Component{
                             <input type="file" name="file0" onChange={this.fileChange}/>
                         </div>
 
-                        <input type="submit" value="guardar" className="btn btn-succes"/>
+                        <input type="submit" value="guardar" className="btn btn-success"/>
                     </form>
                 </section>
                 <Sidebar/>
