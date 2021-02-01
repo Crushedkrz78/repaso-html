@@ -1,20 +1,23 @@
 <template>
   <div id="app">
-    <HeaderComponent/>
+    <HeaderComponent></HeaderComponent>
+    <Slider></Slider>
   </div>
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
 //import MiComponente from './components/MiComponente.vue'
-import HeaderComponent from './components/HeaderComponent.vue'
+import HeaderComponent from './components/HeaderComponent.vue';
+import Slider from './components/Slider.vue';
 
 export default {
   name: 'App',
   components: {
     //HelloWorld,
     //MiComponente,
-    HeaderComponent
+    HeaderComponent,
+    Slider
   }
 }
 </script>
