@@ -2,6 +2,10 @@
   <div id="app">
     <HeaderComponent></HeaderComponent>
     <Slider></Slider>
+    <div class="center">
+      <LastArticles></LastArticles>
+      <Sidebar></Sidebar>
+    </div>
   </div>
 </template>
 
@@ -10,6 +14,8 @@
 //import MiComponente from './components/MiComponente.vue'
 import HeaderComponent from './components/HeaderComponent.vue';
 import Slider from './components/Slider.vue';
+import Sidebar from './components/Siderbar.vue';
+import LastArticles from './components/LastArticles.vue';
 
 export default {
   name: 'App',
@@ -17,7 +23,9 @@ export default {
     //HelloWorld,
     //MiComponente,
     HeaderComponent,
-    Slider
+    Slider,
+    Sidebar,
+    LastArticles
   }
 }
 </script>
