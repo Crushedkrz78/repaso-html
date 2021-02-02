@@ -1,10 +1,11 @@
 <template>
-    <div id="MiComponente">
+    <section id="content">
+        <h2 class="subheader">{{ titulo }}</h2>
         <hr/>
         <h1>Este es mi Componente</h1>
         <h2>{{subtitulo}}</h2>
         <hr/>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -12,6 +13,7 @@ export default {
     name: 'MiComponente',
     data(){
         return {
+            titulo: 'Mi Componente',
             subtitulo: 'Soy el subtítulo de mi componente'
         }
     }
