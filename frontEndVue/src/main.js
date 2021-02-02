@@ -22,7 +22,7 @@ const routes = [
   {path: '/', component: LastArticles},
   {path: '/blog', component: Blog},
   {path: '/formulario', component: Formulario},
-  {path: '/pagina', component: Pagina}
+  {path: '/pagina/:id?', name: 'pagina', component: Pagina}
 ];
 
 const router = new VueRouter({
