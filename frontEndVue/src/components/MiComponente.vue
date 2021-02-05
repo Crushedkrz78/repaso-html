@@ -5,6 +5,14 @@
         <h1>Este es mi Componente</h1>
         <h2>{{subtitulo}}</h2>
         <hr/>
+
+        <h2>Reactividad</h2>
+        <input type="text" v-model="nombre"/>
+        <h3>Mi nombre es: <strong>{{nombre}}</strong></h3>
+
+        <pre>
+            {{$data}}
+        </pre>
     </section>
 </template>
 
@@ -14,7 +22,8 @@ export default {
     data(){
         return {
             titulo: 'Mi Componente',
-            subtitulo: 'Soy el subtítulo de mi componente'
+            subtitulo: 'Soy el subtítulo de mi componente',
+            nombre: ''
         }
     }
 }
