@@ -10,9 +10,21 @@
         <input type="text" v-model="nombre"/>
         <h3>Mi nombre es: <strong>{{nombre}}</strong></h3>
 
-        <pre>
-            {{$data}}
-        </pre>
+        <h2>Directivas Condicionales</h2>
+        <input type="number" v-model="edad"/>
+        <h3>Mi edad es: <strong>{{edad}}</strong></h3>
+
+        <p class="alert-danger-provisional" v-if="edad && edad >= 18 && edad < 65">
+            Eres Mayor de edad!!!
+        </p>
+
+        <p class="alert-purple-provisional" v-if="edad && edad >= 65">
+            Eres de edad Avanzada!!!
+        </p>
+
+        <p class="alert-success-provisional" v-else>
+            Eres Menor de edad!!!
+        </p>
     </section>
 </template>
 
@@ -23,7 +35,8 @@ export default {
         return {
             titulo: 'Mi Componente',
             subtitulo: 'Soy el subtítulo de mi componente',
-            nombre: ''
+            nombre: '',
+            edad: 18
         }
     }
 }
