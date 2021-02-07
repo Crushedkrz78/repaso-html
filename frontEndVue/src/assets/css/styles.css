@@ -101,6 +101,22 @@ body{
     font-weight: bold;
 }
 
+.yeargreen{
+    background: green !important;
+    color: white !important;
+    padding: 10px !important;
+    width: 111px !important;
+    text-align: center !important;
+}
+
+.yearred{
+    background: red !important;
+    color: white !important;
+    padding: 10px !important;
+    width: 111px !important;
+    text-align: center !important;
+}
+
 #menu a:hover,
 #menu .active {
     color: #078025;
