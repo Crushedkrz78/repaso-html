@@ -5,6 +5,8 @@
                 <h2 class="subheader">Películas</h2>
                 <div class="mis-datos" v-if="misDatos">
                     <p v-html="misDatos"></p>
+                    <br/>
+                    {{this.nombre | mayusculas | concatenaYear('Este es el mejor año')}}
                 </div>
                 <div class="favorita" v-if="favorita">
                     La película marcada es:
@@ -64,6 +66,15 @@ export default {
         },
         misDatos(){
             return this.nombre + ' <strong>' + this.apellidos + '</strong>';
+        }
+    },
+    filters: {
+        mayusculas(value){
+            return value.toUpperCase();
+        },
+        concatenaYear(value, mensaje){
+            var date = new Date();
+            return value + ' ' + date.getFullYear() + ' ' + mensaje;
         }
     }
 }
