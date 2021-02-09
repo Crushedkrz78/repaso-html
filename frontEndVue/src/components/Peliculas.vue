@@ -1,22 +1,30 @@
 <template>
-    <section id="content">
-        <h2 class="subheader">Películas</h2>
-        <!--Listado de articulos-->                
-        <div id="articles">
-            <!-- v-for="pelicula in peliculas" v-bind:key="pelicula.title" -->
-            <div v-for="pelicula in peliculas" v-bind:key="pelicula.title">
-                <Pelicula :pelicula="pelicula"></Pelicula>
-            </div>
+    <div class="general">
+        <div class="center">
+            <section id="content">
+                <h2 class="subheader">Películas</h2>
+                <!--Listado de articulos-->                
+                <div id="articles">
+                    <!-- v-for="pelicula in peliculas" v-bind:key="pelicula.title" -->
+                    <div v-for="pelicula in peliculas" v-bind:key="pelicula.title">
+                        <Pelicula :pelicula="pelicula"></Pelicula>
+                    </div>
+                </div>
+            </section>
+            <Sidebar></Sidebar>
+            <div class="clearfix"></div>
         </div>
-    </section>
+    </div>
 </template>
 
 <script>
+import Sidebar from './Siderbar.vue';
 import Pelicula from './Pelicula.vue';
 export default {
     name: 'Peliculas',
     components: {
-        Pelicula
+        Pelicula,
+        Sidebar
     },
     data(){
         return{
