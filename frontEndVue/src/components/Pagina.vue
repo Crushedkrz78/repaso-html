@@ -1,6 +1,6 @@
 <template>
     <div class="general">
-        <Slider></Slider>
+        <Slider texto="Página de pruebas"></Slider>
         <div class="center">
             <section id="content">
                 <h2 class="subheader">Página de pruebas</h2>
