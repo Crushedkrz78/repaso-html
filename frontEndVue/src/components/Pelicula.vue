@@ -11,6 +11,10 @@
             {{pelicula.year}}
         </span>
         <a href="#">Leer más</a>
+
+        <input type="button" value="Marcar como favorito"
+            @click="pasarFavoritaAlPadre(pelicula)"
+        />
         
         <div class="clearfix"></div>
     </article>
@@ -22,6 +26,11 @@ export default {
     props: ['pelicula'],
     mounted(){
         console.log(this.pelicula);
+    },
+    methods: {
+        pasarFavoritaAlPadre(pelicula){
+            this.$emit('favorita', pelicula);
+        }
     }
 }
 </script>
