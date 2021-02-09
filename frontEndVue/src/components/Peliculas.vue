@@ -3,6 +3,9 @@
         <div class="center">
             <section id="content">
                 <h2 class="subheader">Películas</h2>
+                <div class="mis-datos" v-if="misDatos">
+                    <p v-html="misDatos"></p>
+                </div>
                 <div class="favorita" v-if="favorita">
                     La película marcada es:
                     <h3>{{favorita.title}}</h3>
@@ -10,7 +13,7 @@
                 <!--Listado de articulos-->                
                 <div id="articles">
                     <!-- v-for="pelicula in peliculas" v-bind:key="pelicula.title" -->
-                    <div v-for="pelicula in peliculas" v-bind:key="pelicula.title">
+                    <div v-for="pelicula in peliculasMayuscula" v-bind:key="pelicula.title">
                         <Pelicula 
                             :pelicula="pelicula"
                             @favorita="haLlegadoLaPeliculaFavorita"
@@ -35,6 +38,8 @@ export default {
     },
     data(){
         return{
+            nombre: 'Cristian',
+            apellidos: 'Perez',
             favorita: null,
             peliculas: [
                 {title: 'Batman vs Superman', year: 2017, image: ""},
@@ -47,6 +52,18 @@ export default {
     methods: {
         haLlegadoLaPeliculaFavorita(favorita){
             this.favorita = favorita;
+        }
+    },
+    computed: {
+        peliculasMayuscula(){
+            var peliculasMod = this.peliculas;
+            for(var i=0; i<this.peliculas.length; i++){
+                peliculasMod[i].title = peliculasMod[i].title.toUpperCase();
+            }
+            return this.peliculas;
+        },
+        misDatos(){
+            return this.nombre + ' <strong>' + this.apellidos + '</strong>';
         }
     }
 }
