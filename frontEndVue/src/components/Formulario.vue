@@ -25,6 +25,9 @@
                         <input type="submit" value="Enviar" class="btn btn-success"/>
 
                     </form>
+                    <div class="datos" v-if="user">
+                        <h3>{{user.nombre + ' ' + user.apellidos}}</h3>
+                    </div>
             </section>
             <Sidebar></Sidebar>
             <div class="clearfix"></div>
@@ -51,7 +54,7 @@ export default {
     },
     methods: {
         mostrarUsuario(){
-            console.log("mostrar Usuario");
+            console.log(this.user);
         }
     }
 }
