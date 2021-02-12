@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
+import Vuelidate from 'vuelidate';
 
 //Import componentes to be routed
 import LastArticles from './components/LastArticles.vue';
@@ -15,6 +16,7 @@ import Peliculas from './components/Peliculas.vue';
 Vue.config.productionTip = false
 
 Vue.use(VueRouter);
+Vue.use(Vuelidate);
 
 const routes = [
   {path: '/home', component: LastArticles},
