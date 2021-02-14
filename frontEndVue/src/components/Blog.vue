@@ -8,7 +8,7 @@
                 <div id="articles" v-if="articles">
                     <article class="article-item" v-for="article in articles" :key="article._id">
                         <div class="image-wrap">
-                            <img :src="'http://localhost:3900/api/get-image/'+article.image" :alt="article.title" v-if="article.image"/>
+                            <img :src="url + 'get-image/'+article.image" :alt="article.title" v-if="article.image"/>
                             <img src="../assets/images/default-image.png" :alt="article.title" v-if="!article.image"/>
                         </div>
                         <h2>{{article.title}}</h2>
@@ -32,6 +32,7 @@
 import Slider from './Slider.vue';
 import Sidebar from './Siderbar.vue';
 import axios from 'axios';
+import Global from '../Global';
 
 export default {
     name: 'Blog',
@@ -44,12 +45,13 @@ export default {
     },
     data(){
         return {
+            url: Global.url,
             articles: []
         }
     },
     methods: {
         getArticles(){
-            axios.get('http://localhost:3900/api/articles')
+            axios.get(this.url + 'articles')
                 .then(res => {
                     if(res.data.status == 'success'){
                         this.articles = res.data.articles;
