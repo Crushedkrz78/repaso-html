@@ -4,21 +4,8 @@
         <div class="center">
             <section id="content">
                 <h2 class="subheader">Blog</h2>
-
                 <div id="articles" v-if="articles">
-                    <article class="article-item" v-for="article in articles" :key="article._id">
-                        <div class="image-wrap">
-                            <img :src="url + 'get-image/'+article.image" :alt="article.title" v-if="article.image"/>
-                            <img src="../assets/images/default-image.png" :alt="article.title" v-if="!article.image"/>
-                        </div>
-                        <h2>{{article.title}}</h2>
-                        <span class="date">
-                            {{article.date}}
-                        </span>
-                        <a href="#">Leer más</a>
-                        
-                        <div class="clearfix"></div>
-                    </article>
+                    <Articles :articles="articles"></Articles>
                 </div>
 
             </section>
@@ -31,14 +18,17 @@
 <script>
 import Slider from './Slider.vue';
 import Sidebar from './Siderbar.vue';
+import Articles from './Articles.vue';
 import axios from 'axios';
 import Global from '../Global';
+
 
 export default {
     name: 'Blog',
     components: {
         Slider,
-        Sidebar
+        Sidebar,
+        Articles
     },
     mounted(){
         this.getArticles();
