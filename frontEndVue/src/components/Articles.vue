@@ -8,7 +8,7 @@
                 </div>
                 <h2>{{article.title}}</h2>
                 <span class="date">
-                    {{article.date}}
+                    {{article.date | moment("from", "now")}}
                 </span>
                 <a href="#">Leer más</a>
                 
