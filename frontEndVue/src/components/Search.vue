@@ -41,7 +41,7 @@ export default {
     data(){
         return {
             url: Global.url,
-            articles: []
+            articles: null
         }
     },
     methods: {
@@ -49,7 +49,7 @@ export default {
             axios.get(this.url + 'search/' + searchString)
                 .then(res => {
                     if(res.data.status == 'success'){
-                        this.articles = res.data.articles;
+                        this.articles = res.data.articlesFound;
                     }
                     console.log(this.articles);
                 });
