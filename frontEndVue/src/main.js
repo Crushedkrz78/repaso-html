@@ -11,6 +11,7 @@ import LastArticles from './components/LastArticles.vue';
 import MiComponente from './components/MiComponente.vue';
 import HelloWorld from './components/HelloWorld.vue';
 import Blog from './components/Blog.vue';
+import Search from './components/Search.vue';
 import Formulario from './components/Formulario.vue';
 import Pagina from './components/Pagina.vue';
 import ErrorComponent from './components/ErrorComponent.vue';
@@ -33,6 +34,7 @@ const routes = [
   {path: '/peliculas', component: Peliculas},
   {path: '/', component: LastArticles},
   {path: '/blog', component: Blog},
+  {path: '/buscador/:searchString', component: Search},
   {path: '/formulario', component: Formulario},
   {path: '/pagina/:id?', name: 'pagina', component: Pagina},
   {path: '*', component: ErrorComponent}
