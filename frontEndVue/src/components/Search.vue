@@ -1,6 +1,6 @@
 <template>
     <div class="general">
-        <Slider texto="Búsqueda"></Slider>
+        <Slider :texto="'Búsqueda: '+searchString"></Slider>
         <div class="center">
             <section id="content">
                 <h2 class="subheader" v-if="articles">Artículos encontrados</h2>
@@ -35,13 +35,14 @@ export default {
         Articles
     },
     mounted(){
-        var searchString = this.$route.params.searchString;
-        this.getArticlesBySearch(searchString);
+        this.searchString = this.$route.params.searchString;
+        this.getArticlesBySearch(this.searchString);
     },
     data(){
         return {
             url: Global.url,
-            articles: null
+            articles: null,
+            searchString: null
         }
     },
     methods: {
