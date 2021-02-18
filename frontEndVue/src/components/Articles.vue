@@ -6,7 +6,11 @@
                     <img :src="article.url + 'get-image/'+article.image" :alt="article.title" v-if="article.image"/>
                     <img src="../assets/images/default-image.png" :alt="article.title" v-if="!article.image"/>
                 </div>
-                <h2>{{article.title}}</h2>
+                <h2>
+                    <router-link :to="{name: 'article', params: {id: article._id}}">
+                        {{article.title}}
+                    </router-link>
+                </h2>
                 <span class="date">
                     {{article.date | moment("from", "now")}}
                 </span>
