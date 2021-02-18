@@ -3,7 +3,7 @@
         <div id="articles-list" v-if="articles && articles.length >= 1">
             <article class="article-item" v-for="article in articles" :key="article._id">
                 <div class="image-wrap">
-                    <img :src="url + 'get-image/'+article.image" :alt="article.title" v-if="article.image"/>
+                    <img :src="article.url + 'get-image/'+article.image" :alt="article.title" v-if="article.image"/>
                     <img src="../assets/images/default-image.png" :alt="article.title" v-if="!article.image"/>
                 </div>
                 <h2>{{article.title}}</h2>
