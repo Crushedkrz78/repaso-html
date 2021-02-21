@@ -5,6 +5,24 @@
             <section id="content">
                 <h2 class="subheader">Crear artículo</h2>
                 <!-- Formulario -->
+                <form class="mid-form">
+                    <div class="form-group">
+                        <label for="title">Título</label>
+                        <input type="text" name="title"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Contenido</label>
+                        <textarea name="content"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Imagen</label>
+                        <input type="file" name="image"/>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <input type="submit" value="Guardar" class="btn btn-success"/>
+                </form>
             </section>
             <Sidebar></Sidebar>
             <div class="clearfix"></div>
