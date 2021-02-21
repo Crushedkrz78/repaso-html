@@ -1,22 +1,21 @@
 <template>
     <div class="general">
-        <Slider texto="Blog"></Slider>
         <div class="center">
             <section id="content">
                 <h2 class="subheader">Crear artículo</h2>
                 <!-- Formulario -->
-                <form class="mid-form">
+                <form class="mid-form" v-on:submit.prevent="save()">
                     <div class="form-group">
                         <label for="title">Título</label>
-                        <input type="text" name="title"/>
+                        <input type="text" name="title" v-model="article.title"/>
                     </div>
                     <div class="form-group">
                         <label for="content">Contenido</label>
-                        <textarea name="content"/>
+                        <textarea name="content" v-model="article.content"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="image">Imagen</label>
-                        <input type="file" name="image"/>
+                        <input type="file" name="image" />
                     </div>
 
                     <div class="clearfix"></div>
@@ -31,7 +30,6 @@
 </template>
 
 <script>
-import Slider from './Slider.vue';
 import Sidebar from './Siderbar.vue';
 //import Global from '../Global';
 import Article from '../models/Article';
@@ -41,7 +39,6 @@ import Article from '../models/Article';
 export default {
     name: 'CreateArticle',
     components: {
-        Slider,
         Sidebar
     },
     data(){
@@ -51,6 +48,11 @@ export default {
     },
     mounted(){
         console.log(this.article);
+    },
+    methods: {
+        save(){
+            console.log(this.article);
+        }
     }
 }
 </script>
