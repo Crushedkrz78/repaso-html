@@ -15,15 +15,24 @@
 <script>
 import Slider from './Slider.vue';
 import Sidebar from './Siderbar.vue';
-import Global from '../Global';
-import axios from 'axios';
-import { required, minLength } from 'vuelidate/lib/validators';
+//import Global from '../Global';
+import Article from '../models/Article';
+//import axios from 'axios';
+//import { required, minLength } from 'vuelidate/lib/validators';
 
 export default {
     name: 'CreateArticle',
     components: {
         Slider,
         Sidebar
+    },
+    data(){
+        return{
+            article: new Article('', '', null, '')
+        }
+    },
+    mounted(){
+        console.log(this.article);
     }
 }
 </script>
