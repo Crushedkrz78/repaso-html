@@ -31,9 +31,9 @@
 
 <script>
 import Sidebar from './Siderbar.vue';
-//import Global from '../Global';
+import Global from '../Global';
 import Article from '../models/Article';
-//import axios from 'axios';
+import axios from 'axios';
 //import { required, minLength } from 'vuelidate/lib/validators';
 
 export default {
@@ -43,6 +43,7 @@ export default {
     },
     data(){
         return{
+            url: Global.url,
             article: new Article('', '', null, '')
         }
     },
@@ -52,6 +53,16 @@ export default {
     methods: {
         save(){
             console.log(this.article);
+            axios.post(this.url+'save', this.article)
+                .then(response => {
+                    console.log(response.data);
+                    if(response.data.status == 'success'){
+                        this.$router.push('/blog');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
     }
 }
