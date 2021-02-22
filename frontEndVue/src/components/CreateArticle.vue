@@ -8,10 +8,12 @@
                     <div class="form-group">
                         <label for="title">Título</label>
                         <input type="text" name="title" v-model="article.title"/>
+                        <div v-if="submitted && !$v.article.title.required">Debes ingresar un título</div>
                     </div>
                     <div class="form-group">
                         <label for="content">Contenido</label>
                         <textarea name="content" v-model="article.content"></textarea>
+                        <div v-if="submitted && !$v.article.content.required">Debes ingresar un contenido</div>
                     </div>
                     <div class="form-group">
                         <label for="image">Imagen</label>
@@ -34,7 +36,7 @@ import Sidebar from './Siderbar.vue';
 import Global from '../Global';
 import Article from '../models/Article';
 import axios from 'axios';
-//import { required, minLength } from 'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators';
 
 export default {
     name: 'CreateArticle',
@@ -44,7 +46,8 @@ export default {
     data(){
         return{
             url: Global.url,
-            article: new Article('', '', null, '')
+            article: new Article('', '', null, ''),
+            submitted: false
         }
     },
     mounted(){
@@ -52,7 +55,13 @@ export default {
     },
     methods: {
         save(){
-            console.log(this.article);
+            this.submitted = true;
+
+            this.$v.$touch();
+            if(this.$v.$invalid){
+                return false;
+            }
+
             axios.post(this.url+'save', this.article)
                 .then(response => {
                     console.log(response.data);
@@ -63,6 +72,16 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
+        }
+    },
+    validations: {
+        article: {
+            title: {
+            required
+            },
+            content: {
+                required
+            }
         }
     }
 }
