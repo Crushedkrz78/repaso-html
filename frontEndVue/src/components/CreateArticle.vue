@@ -71,7 +71,28 @@ export default {
                 .then(response => {
                     console.log(response.data);
                     if(response.data.status == 'success'){
-                        this.$router.push('/blog');
+                        //Subida de archivo
+                        if(this.file != null && this.file != undefined && this.file != ''){
+                            const formData = new FormData();
+                            formData.append('file0', this.file, this.file.name);
+
+                            var articleId = response.data.article._id;
+                            axios.post(this.url + 'upload-image/' + articleId, formData)
+                                .then(response => {
+                                    console.log(response);
+                                    if(response.data.article){
+                                        this.article = response.data.article;
+                                        this.$router.push('/blog');
+                                    }
+                                })
+                                .catch(error => {
+                                    console.log(error);
+                                });
+                        }else{
+                            // Redirección a la página de BLOG
+                            this.article = response.data.article;
+                            this.$router.push('/blog');
+                        }
                     }
                 })
                 .catch(error => {
