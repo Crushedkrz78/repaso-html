@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Imagen</label>
-                        <input type="file" name="image" />
+                        <input type="file" id="file" ref="file" name="file0" @change="fileChange()" />
                     </div>
 
                     <div class="clearfix"></div>
@@ -47,13 +47,18 @@ export default {
         return{
             url: Global.url,
             article: new Article('', '', null, ''),
-            submitted: false
+            submitted: false,
+            file: ''
         }
     },
     mounted(){
         console.log(this.article);
     },
     methods: {
+        fileChange(){
+            this.file = this.$refs.file.files[0];
+            console.log(this.file);
+        },
         save(){
             this.submitted = true;
 
