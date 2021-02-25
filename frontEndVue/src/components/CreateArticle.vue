@@ -1,34 +1,4 @@
-<template>
-    <div class="general">
-        <div class="center">
-            <section id="content">
-                <h2 class="subheader">Crear artículo</h2>
-                <!-- Formulario -->
-                <form class="mid-form" v-on:submit.prevent="save()">
-                    <div class="form-group">
-                        <label for="title">Título</label>
-                        <input type="text" name="title" v-model="article.title"/>
-                        <div v-if="submitted && !$v.article.title.required">Debes ingresar un título</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="content">Contenido</label>
-                        <textarea name="content" v-model="article.content"></textarea>
-                        <div v-if="submitted && !$v.article.content.required">Debes ingresar un contenido</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Imagen</label>
-                        <input type="file" id="file" ref="file" name="file0" @change="fileChange()" />
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <input type="submit" value="Guardar" class="btn btn-success"/>
-                </form>
-            </section>
-            <Sidebar></Sidebar>
-            <div class="clearfix"></div>
-        </div>
-    </div>
+<template src="./CreateArticle.html">
 </template>
 
 <script>
