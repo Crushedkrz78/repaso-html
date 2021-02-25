@@ -13,6 +13,8 @@
                         </span>
                         <p>{{article.content}}</p>
                         <div class="clearfix"></div>
+                        <router-link to="/editar" class="btn btn-warning">Editar</router-link>
+                        <router-link to="/eliminar" class="btn btn-danger">Eliminar</router-link>
                     </article>
 
             </section>

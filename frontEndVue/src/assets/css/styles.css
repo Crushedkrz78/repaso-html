@@ -234,6 +234,18 @@ body{
     background: rgb(23, 150, 19);
 }
 
+.btn-warning{
+    background: rgb(245, 181, 4);
+    color: white !important;
+    text-align: center;
+}
+
+.btn-danger{
+    background: rgb(185, 16, 16);
+    color: white !important;
+    text-align: center;
+}
+
 .btn-success:hover {
     background: black;
 }
