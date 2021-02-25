@@ -7,6 +7,7 @@ import Global from '../Global';
 import Article from '../models/Article';
 import axios from 'axios';
 import { required } from 'vuelidate/lib/validators';
+import swal from 'sweetalert';
 
 export default {
     name: 'CreateArticle',
@@ -51,14 +52,29 @@ export default {
                                 .then(response => {
                                     console.log(response);
                                     if(response.data.article){
+                                        swal(
+                                            'Articulo creado',
+                                            'El artículo se ha creado correctamente',
+                                            'success'
+                                        );
                                         this.article = response.data.article;
                                         this.$router.push('/blog');
                                     }
                                 })
                                 .catch(error => {
                                     console.log(error);
+                                    swal(
+                                        'Creación fallida',
+                                        'El artículo no se ha creado correctamente',
+                                        'error'
+                                    );
                                 });
                         }else{
+                            swal(
+                                'Articulo creado',
+                                'El artículo se ha creado correctamente',
+                                'success'
+                            );
                             // Redirección a la página de BLOG
                             this.article = response.data.article;
                             this.$router.push('/blog');
