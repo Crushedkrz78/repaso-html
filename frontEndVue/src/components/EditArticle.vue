@@ -42,33 +42,32 @@ export default {
         },
         save(){
             this.submitted = true;
-
+            var articleId = this.$route.params.id;
             this.$v.$touch();
             if(this.$v.$invalid){
                 return false;
             }
 
-            axios.post(this.url+'save', this.article)
+            axios.put(this.url + 'article/' + articleId, this.article)
                 .then(response => {
-                    console.log(response.data);
                     if(response.data.status == 'success'){
                         //Subida de archivo
                         if(this.file != null && this.file != undefined && this.file != ''){
                             const formData = new FormData();
                             formData.append('file0', this.file, this.file.name);
 
-                            var articleId = response.data.article._id;
+                            var articleId = response.data.articleUpdated._id;
                             axios.post(this.url + 'upload-image/' + articleId, formData)
                                 .then(response => {
                                     console.log(response);
                                     if(response.data.article){
                                         swal(
-                                            'Articulo creado',
-                                            'El artículo se ha creado correctamente',
+                                            'Articulo editado',
+                                            'El artículo se ha editado correctamente',
                                             'success'
                                         );
                                         this.article = response.data.article;
-                                        this.$router.push('/blog');
+                                        this.$router.push('/articulo/'+this.article._id);
                                     }
                                 })
                                 .catch(error => {
@@ -81,13 +80,15 @@ export default {
                                 });
                         }else{
                             swal(
-                                'Articulo creado',
-                                'El artículo se ha creado correctamente',
+                                'Articulo editado',
+                                'El artículo se ha editado correctamente',
                                 'success'
                             );
                             // Redirección a la página de BLOG
-                            this.article = response.data.article;
-                            this.$router.push('/blog');
+                            this.article = response.data.articleUpdated;
+                            console.log(response);
+                            console.log(this.article);
+                            this.$router.push('/articulo/' + this.article._id);
                         }
                     }
                 })
