@@ -250,6 +250,10 @@ body{
     background: black;
 }
 
+.image-small{
+    width: 150px;
+}
+
 .mid-form {
     width: 50%;
     margin: 0px auto;
